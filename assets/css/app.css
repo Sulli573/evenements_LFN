@@ -1,0 +1,83 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: blue;
+    margin-bottom: 50px;
+}
+
+.box1 {
+    background-color: red;
+    height: 50px;
+    width: 50px;
+}
+
+.box2 {
+    background-color: green;
+    height: 100px;
+    width: 100px;
+}
+
+.wrapper2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    background-color: blue;
+}
+
+.box3 {
+    background-color: red;
+    height: 50px;
+    width: 50px;
+}
+
+.box4 {
+    background-color: green;
+    height: 100px;
+    width: 100px;
+}
+
+.btn {
+    border: unset;
+    border-radius: 25px;
+    padding : 10px;
+    color:white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer; /* change le type du curseur (il y a d'autres styles de curseur)*/
+}
+
+/* Réduis la luminosité (text & backgroun) */
+.btn:hover { 
+    filter: brightness(0.8);
+}
+
+.btn-blue {
+    background-color: blue;
+}
+
+/* redefini le background sans toucher au texte */
+/* .btn-blue:hover { 
+    background-color: rgb(1, 1, 143);
+} */
+
+.btn-red {
+    background-color: red;
+}
+
+.btn-green{
+    background-color: rgb(13, 129, 42);
+}

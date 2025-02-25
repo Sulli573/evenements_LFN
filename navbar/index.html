@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet"><!--rel pour relation -->
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script><!--Permet de récypérer des icones etc... sur fontawesome.com-->
+    <!-- 3manieres d'inclure du css
+    1er dans un fichier à part(souvent style.css) puis inclure dans le head avec un lien , balise link
+    2eme directement dans le head avoir une balise style et on mets directement le css dedans
+    3eme : directement sur les balise mettre un attribut stryle="et mettre le css" 
+    -->
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo">
+            <a href="#">
+            <i class="fa-brands fa-facebook"></i> <!--icone récupérée sur le site fontawesome.com-->
+            </a>
+        </div>
+
+        <!--la balise Nav "équivaut" à une div-->
+        <nav class="header__nav">
+            <ul>
+                <li class="header__nav__item">
+                    <a href="#">
+                        Accueil
+                    </a>
+                </li>
+                <li class="header__nav__item">
+                    <a href="#">
+                        Blog
+                    </a>
+                </li>
+                <li class="header__nav__item">
+                    <a href="#">
+                        Vidéos
+                    </a>
+                </li>
+                <li class="header__nav__item">
+                    <a href="#">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav> 
+
+        <div class="header__actions">
+            <a href=""><i class="fa-regular fa-user"></i></a>
+            <a href=""><i class="fa-solid fa-power-off"></i></a>
+        </div>
+
+    </header>
+</body>
+</html>

@@ -1,0 +1,56 @@
+.event {
+    display: flex;
+    width: 100%;
+    height: 100vh; /*100vh prend 100% de l'ecran physique*/
+    gap:10px;
+    padding:10px;
+}
+
+.event_picture {
+    /* avec background-image l'image est en arrière plan (comme bakcground-color) et si on met du texte (avec <p>) il pourra etre devant */
+    /* background-image: url('https://picsum.photos/1600/800');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+   width: 100%;
+   border-radius: 10px;
+   border: 5px solid black;
+   background-color: black; /*Attention possible ecart entre les bordures (de event et event-picture donc fond noir pour ne pas voir de blanc*/
+}
+
+.event_picture img {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center;
+    overflow: hidden;
+}
+
+.event_description {
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background-color:rgb(205, 193, 193);
+    border-radius: 10px;
+    border: 5px solid black;
+}
+
+.event_description ul {
+    line-height: 50px;
+    list-style: none;
+    font-size: 20px;
+    font-family: 'Montserra', sans-serif;
+}
+
+.event_description span {
+    font-weight: bold;
+}
+
+.event_description_action{
+    display: flex;
+    gap:20px
+}

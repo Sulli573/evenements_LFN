@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.header {
+    margin-bottom: 10px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(0, 255, 179);
+    font-size: 25px;
+}
+
+.header nav ul {/*Bien spécifier que c'est le ul dans la nav parce que sinon le style sera appliqué à toutes les ul de header  */
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.header a:hover {
+    color: rgb(102, 102, 102);
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+/** ------------------ BOUTON ------------------ */
+
+.btn {
+    border: unset;
+    border-radius: 25px;
+    padding : 10px;
+    color:white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer; /* change le type du curseur (il y a d'autres styles de curseur)*/
+}
+
+/* Réduis la luminosité (text & backgroun) */
+.btn:hover { 
+    filter: brightness(0.8);
+}
+
+.btn-blue {
+    background-color: blue;
+}
+
+/* redefini le background sans toucher au texte */
+/* .btn-blue:hover { 
+    background-color: rgb(1, 1, 143);
+} */
+
+.btn-red {
+    background-color: red;
+}
+
+.btn-green{
+    background-color: rgb(13, 129, 42);
+}
+
+main { /*Comportement par defaut le tableau est collé à la bordure de l'ecran donc met un padding pour le décoller*/
+    padding: 10px;
+}
+
+/** ------------------ TABLEAU ------------------ */
+.table {
+    width: 100%;
+    border-collapse: collapse; /*fusionne les cellules sinon il y a un gap entre elles*/
+    /* border: 2px solid black; */
+}
+
+/* .table th {
+    border: 2px solid black;
+} */
+
+.table th, .table td {
+    text-align: center;
+    border: 2px solid black;
+    padding: 5px;
+}

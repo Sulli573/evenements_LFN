@@ -1,0 +1,65 @@
+
+:root{
+    --size-icone:35px;
+}
+
+*{
+    /* margin espacement exterieur et padding 0 espacement interieur à 0 */
+    box-sizing: border-box; /*https://developer.mozilla.org/fr/docs/Web/CSS/box-sizing pour voir comportement des box */
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #F5F5F5;
+    font-family:"Roboto",sans-serif;
+}
+
+a{
+    color:#E9E9E9;
+    list-style: none;
+    text-decoration: none;
+}
+
+.header{
+   padding:30px;
+   height: 60px; 
+   background-color: #4D74FF;
+   color:#E9E9E9;
+   box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+   display:flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.header__logo{
+    font-size: var(--size-icone);
+
+}
+
+.header__nav ul{
+    display:flex;
+    gap:55px;
+
+}
+
+.header__nav__item{
+    display: inline;
+    text-transform: uppercase;
+    font-weight: bold;
+
+}
+
+.header__actions{
+    display:flex;
+    gap:15px;
+    font-size: var(--size-icone);
+}
+    
+@media screen and (max-width:800px) {
+    .header__nav{
+        display:none;
+    }
+}
+
+

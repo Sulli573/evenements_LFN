@@ -1,0 +1,202 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);/* repaeat 2 pour avoir 2colonnes sur la largeur, 1fr est une fraction de la grille*/
+    grid-column-gap: 20px;
+    /*grid-template-rows: 500px 500px; /* auto : taille automatique (hauteur de la ligne), 500px : taille fixe */
+    grid-row-gap: 50px;
+    justify-items: center; /* alignement horizontal */
+    align-items: center; /* alignement vertical */
+}
+
+.card {
+    width: 250px;
+    /* height: 250px;*/ /* Attention le contenant restera à 250px de haut et donc si bcp écrit dépassera*/
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover { /*fait quelque quand passe sur la carte. on peut agir sur ces 2 éléments : position ,taille et rotation*/
+    transform: scale(1.2); /*scale : agrandir la carte, rotate : rotation de la carte*/
+}
+
+/* exemple animation */
+.card:hover {
+    /* transform: scale(1.2); */
+    /* transition: transform 1s ease-in-out; */
+    animation: rotate 5s ease-in-out forwards; 
+    /* animation-play-state: paused;  permet de mettre en pause l'animation */
+}
+
+/* Le mot clef forward sur la propriété animation, permet de garder l'état final de l'animation quand-elle est finie(ex:animation: rotate 5s ease-in-out forwards;) */
+
+@keyframes rotate {
+    0% {
+        transform: rotate(30deg);
+    }
+    50% {
+        transform: rotate(-30deg);
+        background-color: red;
+        border-radius: 50px;
+    }
+    100% {
+        transform: rotate(300deg);
+        background-color: blue;
+    }
+}
+
+/* transition est simple et nécessite une interaction utilisateur.
+animation avec @keyframes est plus puissant pour des effets continus.
+Les courbes de vitesse (ease-in-out, linear, etc.) influencent le rendu.
+On peut contrôler la direction, la répétition et l'état final d'une animation. */
+
+.card__header {
+    height: 100px;
+}
+
+.card__header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* va adapter le contenu de l'image par rapport au parent en utilisant sa largeur et sa hauteur*/
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card__body {
+    /* background-color: yellow; */
+    padding: 20px;
+    flex-grow: 1; /*Prend toute la place disponible*
+    /*flex-shrink: ; inverse de grow*/
+}
+
+.card__body ul {
+    list-style-type: none;
+    font-weight: bold;
+}
+
+.card__footer {
+    display: flex; /* par defaut en flex-direction: row */
+    /*flex-direction: column;  pour changer la direction en colonne */
+    justify-content: flex-end; /* row : align horizontalement, column : align verticalement */
+    align-items: center; /* row : align verticalement, column : align horizontalement */
+    gap:5px;
+    padding: 10px;
+}
+
+/* 
+* max-width : Applique les styles lorsque l'écran est au plus large que la valeur donnée.
+* min-width : Applique les styles lorsque l'écran est au moins large que la valeur donnée.
+*
+* La condition (max-width: 768px) signifie que les styles à l'intérieur seront appliqués uniquement si la largeur de l'écran est inférieure ou égale à 768 pixels.
+*/
+/* @media (max-width: 768px) {
+    body {
+        background-color: red;
+    }
+} */
+
+/**
+* orientation: portrait : l'écran est plus haut que large.
+* orientation: landscape : l'écran est plus large que haut.
+*/
+/* @media (orientation: portrait) {
+    body {
+        background-color: blue;
+    }
+}
+
+@media (min-resolution: 300dpi) {
+    body {
+        background-color: green;
+    }
+} */
+
+/* @media (min-width: 600px) and (max-width: 800px) {
+    body {
+        background-color: yellow;
+    }
+}
+
+/* Appareils qui ont un écran
+@media screen and (max-width: 768px) {
+    body {
+        background-color: blue;
+    }
+}
+
+/* Pour les imprimante
+@media print {
+    body {
+        background-color: yellow;
+    }
+} */
+
+
+/* @media screen and (max-width: 768px) { par rapport à taille écran va passer de 3 colonnes(propriété plus haut(principale) à 2colonnes 
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+} */
+
+/*  Les unités absolus 
+* px : pixel
+* cm, mm, inc: centimètre, millimètre, pouce
+* pt : point  (typographie)
+*/
+
+/* Les unités relatives
+* em: Relatif à la taille de la pocile du parent direct
+* rem: Relatif à la taille de la pocile de la racine (html) (root element)
+*/
+
+html {
+    font-size: 16px;
+}
+
+div {
+    font-size: 20px;
+}
+
+/* div > p > h1 */
+
+p {
+    font-size: 1.5em; /* 1.5 * 20px = 30px */
+}
+
+h1 {
+    font-size: 2em; /* 2 * 30px = 60px */
+}
+
+/*On utilise plutot rem car avec em ça depend du parent direct (en cascade, effet boule de neige qui peuvent etre indésirable) alors que rem depend toujours de la balise html*/
+
+p {
+    font-size: 1.5rem; /* 1.5 * 16px = 24px */
+}
+
+h1 {
+    font-size: 2rem; /* 2 * 16px = 32px */
+}
+
+/* relatif à la taille du viewport (fenêtre du navigateur)  souvent mit au 1er parent comme ça les enfant s'adaptent*/
+/* 1vw = 1% de la largeur du viewport */
+/* 1vh = 1% de la hauteur du viewport */
+/* 1vmin = 1% de la plus petite dimension du viewport */
+/* 1vmax = 1% de la plus grande dimension du viewport */
+
+/* Relatif par rapport à la boite de l'élément */
+/* 1% = 1% de la taille de la boite de l'élément */
+
+/* Quand utiliser quelle unité ? */
+/* ✔ px → Pour des éléments qui doivent avoir une taille fixe. ex: bordures
+✔ rem → Pour des tailles de texte prévisibles et uniformes. pour les titres par exemple car on veut que la taille du texte soit plus grande sur ecran ordi que sur tel(=adaptation en fonction de la taille d'ecran)
+✔ em → Pour des tailles de texte qui doivent être relatives au parent.
+✔ vw/vh → Pour des mises en page fluides et responsives.
+✔ % → Pour adapter des éléments à leur conteneur. */
