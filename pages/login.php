@@ -1,9 +1,39 @@
 <?php
+session_start();
+require '../config/database.php';
 require 'header.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $courriel_utilisateur = $_POST['email'];
+    $mot_de_passe_utilisateur = $_POST['password'];
+
+    try {
+        $stmt = $pdo->prepare("SELECT nom_utilisateur, mot_de_passe_utilisateur FROM utilisateur WHERE courriel_utilisateur = :email");
+        $stmt->bindParam(':email', $courriel_utilisateur);
+        $stmt->execute();
+
+        if ($stmt->rowCount() == 1) {
+            $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (password_verify($mot_de_passe_utilisateur, $utilisateur['mot_de_passe_utilisateur'])) {
+                $_SESSION['nom_utilisateur'] = $utilisateur['nom_utilisateur'];
+                $_SESSION['courriel_utilisateur'] = $courriel_utilisateur;
+                echo 'Connexion réussie';
+                header("Location: home.php");
+                exit();
+            } else {
+                echo 'Mot de passe incorrect';
+            }
+        } else {
+            echo 'Courriel ou mot de passe incorrect';
+        }
+    } catch (PDOException $e) {
+        echo 'Erreur : ' . $e->getMessage();
+    }
+}
 ?>
 
 <!DOCTYPE html>
-<html lang=fr>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,34 +42,29 @@ require 'header.php';
     <link href="../assets/css/login.css" rel="stylesheet">
 </head>
 <body>
-    <!--How to structure a web form: -->
-    <!--https://developer.mozilla.org/fr/docs/Learn_web_development/Extensions/Forms/How_to_structure_a_web_form
-    https://developer.mozilla.org/fr/docs/Learn_web_development/Extensions/Forms/Your_first_form-->
     <div class="login">
-      <form class="form" action="#" method="post">
-        <h1>Connexion</h1>
-        <div class="form_container">
-          <div>
-            <label for="email">Courriel&nbsp;:</label><!--&nbsp force à mettre unb espace insécable-->
-            <input class=input type="email" name="email"> <!--email =clé pour passer la valeur taper du front vers le bac-->
-          </div>
-          <div>
-            <label for="password">Mot de passe :</label>
-            <input type="password" name="password">
-          </div>
-
-          <button type="submit" class="btn btn-blue">Se connecter</button>
-
-          <div class="form_actions">
-            <a href="sign_up.html">
-              <button type="button" class="btn btn-green"><!-- erreur 405 si on ne met pas type boutton car il croit que c'est un boutton de soumission(submit)-->
-                S'inscrire
-              </button>
-            </a>
-          </div>
-        </div>
-      </form>
+        <form class="form" action="" method="post">
+            <h1>Connexion</h1>
+            <div class="form_container">
+                <div>
+                    <label for="email">Courriel&nbsp;:</label>
+                    <input class="input" type="email" name="email" required>
+                </div>
+                <div>
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-blue">Se connecter</button>
+                <div class="form_actions">
+                    <a href="sign_up.php">
+                        <button type="button" class="btn btn-green">S'inscrire</button>
+                    </a>
+                </div>
+            </div>
+        </form>
     </div>
+</body>
+</html>
 
     <!-- flex influ les enfant direct, pas les sous-enfants.
       Si j'ai directement, label, input, label, input, button, avec un flex-direction: column, les éléments seront alignés verticalement. Donc, les labels et les inputs ne seront pas sur la même ligne (ils seront l'un au dessus de l'autre ou plutot courriel sera au dessus de sont champs et pareil pour mot de passe).
@@ -57,5 +82,3 @@ require 'header.php';
      $bdd->prepare('INSERT INTO users (courriel_utlisateur, password) VALUES (:email, :password)'); insere dans la colonne courriel_utilisateur la valeur email
     -->
      
-</body>
-</html>

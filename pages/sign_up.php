@@ -1,5 +1,39 @@
 <?php
+session_start();
+require '../config/database.php';
 require 'header.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $nom_utilisateur = $_POST['nom'];
+  $courriel_utilisateur = $_POST['courriel'];
+  #mettre passeword haché avec fonction password_hash() et PASSWORD_DEFAULT
+  $mot_de_passe_utilisateur = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
+  
+
+  #stockage données dans SESSION
+  $_SESSION['nom_utilisateur'] = $nom_utilisateur;
+  $_SESSION['courriel_utilisateur'] = $courriel_utilisateur;
+
+  #Requête sql d'insertion en base de données
+  try {
+      $stmt = $pdo->prepare("INSERT INTO utilisateur (nom_utilisateur, courriel_utilisateur, mot_de_passe_utilisateur) VALUES (:nom, :courriel, :mot_de_passe)");
+      $stmt->bindParam(':nom', $nom_utilisateur);
+      $stmt->bindParam(':courriel', $courriel_utilisateur);
+      $stmt->bindParam(':mot_de_passe', $mot_de_passe_utilisateur);
+    
+      if ($stmt->execute()) {
+          echo 'Inscription réussie';
+      } else {
+          echo 'Erreur lors de l\'inscription';
+      }
+    } catch (PDOException $e) {
+      echo 'Erreur : ' . $e->getMessage();
+    }
+    //Fermeture de la connexion à la base de données
+    //$conn = null;
+  }
+ 
+
 ?>
 
 <!DOCTYPE html>
@@ -15,23 +49,23 @@ require 'header.php';
 </body>
 
 <div class="login">
-    <form class="form" action="#" method="post">
+    <form class="form" action="" method="post">
       <h1>Inscription</h1>
       <div class="form_container">
         <div>
-          <label for="username">Nom :</label>
-          <input type="text" name="username">
+          <label for="nom">Nom :</label>
+          <input type="text" name="nom" required>
         </div>
         <div>
-          <label for="email">Courriel&nbsp;:</label><!--&nbsp force à mettre unb espace insécable-->
-          <input class=input type="email" name="email"> <!--email =clé pour passer la valeur taper du front vers le bac-->
+          <label for="courriel">Courriel&nbsp;:</label><!--&nbsp force à mettre unb espace insécable-->
+          <input class=input type="email" name="courriel" required> <!--email =clé pour passer la valeur taper du front vers le bac-->
         </div>
         <div>
-          <label for="password">Mot de passe :</label>
-          <input type="password" name="password">
+          <label for="mot_de_passe">Mot de passe :</label>
+          <input type="password" name="mot_de_passe" required>
         </div>
 
-        <button type="submit" class="btn btn-blue"><a href='login.php'>s'inscrire
+        <button type="submit" class="btn btn-blue"><a href='sign_up.php'>s'inscrire
         </a>
         </button>
 

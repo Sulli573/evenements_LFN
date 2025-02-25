@@ -1,15 +1,14 @@
-<?php 
-#Création chaîne de connexion à la base de données
-$dsn = "mysql:host=localhost; dbname=gestion_evenements; charset=utf8";
-
-#Créer l'obejt PDO
+<?php
+#chaine de connexion
+$dsn = "mysql:host=localhost;dbname=evenements;charset=utf8";
 $user = "root";
 $pass = "";
-$pdo = new PDO($dsn, $user,$pass);
 
+#Objet pdo
 try {
     $pdo = new PDO($dsn, $user, $pass);
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 }
-var_dump($pdo);
+?>
