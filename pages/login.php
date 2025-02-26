@@ -1,12 +1,13 @@
 <?php
 session_start();
-require '../config/database.php';
-require 'header.php';
 
+   
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $courriel_utilisateur = $_POST['email'];
     $mot_de_passe_utilisateur = $_POST['password'];
-
+    
+    
+    
     try {
         $stmt = $pdo->prepare("SELECT nom_utilisateur, mot_de_passe_utilisateur FROM utilisateur WHERE courriel_utilisateur = :email");
         $stmt->bindParam(':email', $courriel_utilisateur);
@@ -17,8 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($mot_de_passe_utilisateur, $utilisateur['mot_de_passe_utilisateur'])) {
                 $_SESSION['nom_utilisateur'] = $utilisateur['nom_utilisateur'];
                 $_SESSION['courriel_utilisateur'] = $courriel_utilisateur;
+                $_SESSION['role'] = $utilisateur['role_utilisateur'];
+
                 echo 'Connexion réussie';
-                header("Location: home.php");
+
+                if ($utilisateur['role_utilisateur'] === 'admin') {
+                header("Location: /admin/?page=");
+                }else {
+                    echo 'Mot de passe incorrect';
+                }
                 exit();
             } else {
                 echo 'Mot de passe incorrect';
@@ -31,6 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -54,10 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="password">Mot de passe :</label>
                     <input type="password" name="password" required>
                 </div>
-                <button type="submit" class="btn btn-blue">Se connecter</button>
+                <button type="submit" class="btn btn-blue">Se connecter</button> 
                 <div class="form_actions">
                     <a href="sign_up.php">
-                        <button type="button" class="btn btn-green">S'inscrire</button>
+                        <button type="button" class="btn btn-green">S'inscrire</button> <!--Attention en croyant envoyer le formulaire ça envoie sur une page-->
                     </a>
                 </div>
             </div>

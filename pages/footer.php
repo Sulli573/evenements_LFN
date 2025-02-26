@@ -1,5 +1,3 @@
-<footer>
-copyright
-</footer>
-</body>
-</html>
+<h1>
+    copyright
+</h1>

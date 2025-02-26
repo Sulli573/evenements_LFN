@@ -1,18 +1,4 @@
-<?php
-require '../evenements_LFN/pages/header.php';
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte événement</title>
-    <link href="assets/css/app.css" rel="stylesheet">
-    <link href="assets/css/events.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-   
-</head>
-<body>
+
 
     <div class="container">
         <div class="card">
@@ -159,7 +145,4 @@ require '../evenements_LFN/pages/header.php';
         <div class="box3"></div>
         <div class="box4"></div>
     </div> -->
-    
-</body>
-</html>
 
