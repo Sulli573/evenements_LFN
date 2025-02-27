@@ -71,4 +71,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 </body>
-</html>
+</html>model
+class user {
+    public static function getAllUsers($pdo) {
+        $stmt = $pdo = pdo->prepare(stream_select)
+        $stmt->execute();
+        $result = stmt->fetchAll();
+        return $result
+    }
+}
+controller pour recupérer les datas
+UserController
+require mdeol requiire config
+
+Class UserController {
+    public function index($pdo) {
+        $user=nex User();
+        $users = $user->getAllUser($pdo);
+
+        require_once __DIR__.'/../views/user.php;' // une fois les utilisateurs récupérer et stocké ds la varirables users, afficher la page user
+    }
+}
+
+//instancier et exécuter controller pour lmes passer au fichier user.php
+$controller = new UserController();
+$controller->index($pdo)
