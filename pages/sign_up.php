@@ -1,13 +1,13 @@
 <?php
-session_start();
+
 require __DIR__ . "/../config/database.php";
 // require_once '../config/database.php';
-var_dump($pdo);
+// var_dump($pdo);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $nom_utilisateur = $_POST['nom'];
   $courriel_utilisateur = $_POST['courriel'];
-  #mettre passeword haché avec fonction password_hash() et PASSWORD_DEFAULT
+  //hachage du password 
   $mot_de_passe_utilisateur = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
 
 

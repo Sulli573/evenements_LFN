@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,32 +8,12 @@
     <link href="assets/css/header.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/events.css">
-
     <title>Evenements</title>
 </head>
-
 <body>
-
-
-
-
-    <nav class="bg-slate-800 flex justify-between item-center px-10">
-        <ul class="h-[32px] text-white flex item-center gap-20">
-            <!-- <li>
-                    <a class="<?php echo 'page' === "home" ? "text-yellow-500" : '' ?> "href="?page=home">Home</a> 
-                </li>
-                <a class="<?php if ($current_page === "about.php") {
-                                echo "text-blue-500";
-                            } else {
-                                "";
-                            } ?>" href="?pages/about.php">About</a>
-                
-                <li><a class="<?php if ($current_page === "contact") {
-                                    echo "text-red-500";
-                                } else {
-                                    "";
-                                } ?>"
-                 href="?page=contact">Contact</a></li>  -->
+<!--Remettre changement couleur quand dans l'onglet (voir dossier evenement_lfn_fonctionne sur bureau-->
+    <nav class="bg-slate-800 flex justify-between items-center px-10">
+        <ul class="h-[32px] text-white flex items-center gap-20">
             <li>
                 <a href="?page=home">Home</a>
             </li>
@@ -45,16 +24,8 @@
                 <a href="?page=contact">Contact</a>
             </li>
         </ul>
-
-        <div
-            class="h-[32px] text-white"><a href="?page=login">Connexion</a>
-         
-            <a href="?page=sign_up"><a href="?page=sign_up">S'inscrire</a>
-        
+        <div class="h-[32px] text-white">
+            <a href="?page=login">Connexion</a>
+            <a href="?page=sign_up">S'inscrire</a>
         </div>
-        
     </nav>
-
-
-
-  
