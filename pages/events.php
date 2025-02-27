@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Événements - Admin</title>
-    <link href="../assets/css/admin/admin.css" rel="stylesheet">
-    <link href="../../assets/css/admin/events.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-</head>
-<body>
+
     <header class="header">
         <div></div>
          <!--Ajout de la balise afin d'avoir un justify-space-between qui amène la nav bar au centre et les actions à droite, sinon si la balise n'est pas là, la navbar serait à gauche et l'action à droite-->
@@ -70,5 +60,3 @@
             </tbody>
         </table>
     </main>
-</body>
-</html>

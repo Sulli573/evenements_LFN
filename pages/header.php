@@ -6,8 +6,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/header.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/admin/admin.css">
+    <link rel="stylesheet" href="assets/css/admin/events.css">
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/events.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+
     <title>Evenements</title>
 </head>
 <body>
