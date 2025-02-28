@@ -1,14 +1,18 @@
 <?php
 
-require __DIR__ . "/../config/database.php";
-
+//Si l'utilisateur revient sur la page login alors qu'il est déjà connecté il faut le rediriger vers la page hom et pas exécuter le code dessous
+if (isset($_SESSION['id_utilisateur'])) {
+   
+    header("Location: ?page=home");
+    exit; //coupe le code et n'execute pas le code en dessous
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $courriel_utilisateur = $_POST['email'];
     $mot_de_passe_utilisateur = $_POST['password'];
 
     try {
         // Récupération nom, mdp, role avec requête SQL
-        $stmt = $pdo->prepare("SELECT nom_utilisateur, mot_de_passe_utilisateur, role_utilisateur FROM utilisateur WHERE courriel_utilisateur = :email");
+        $stmt = $pdo->prepare("SELECT id_utilisateur, nom_utilisateur, mot_de_passe_utilisateur, role_utilisateur FROM utilisateur WHERE courriel_utilisateur = :email");
         $stmt->bindParam(':email', $courriel_utilisateur);
         $stmt->execute();
 
@@ -16,6 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
             // Vérification du mot de passe
             if (password_verify($mot_de_passe_utilisateur, $utilisateur['mot_de_passe_utilisateur'])) {
+               
+            
+                $_SESSION['id_utilisateur'] = $utilisateur['id_utilisateur']; // initialisation de la session et assignation de l'id dans la session
                 $_SESSION['nom_utilisateur'] = $utilisateur['nom_utilisateur'];
                 $_SESSION['courriel_utilisateur'] = $courriel_utilisateur;
                 $_SESSION['role'] = $utilisateur['role_utilisateur'];

@@ -26,7 +26,7 @@
 .card:hover {
     /* transform: scale(1.2); */
     /* transition: transform 1s ease-in-out; */
-    animation: rotate 5s ease-in-out forwards; 
+    /* animation: rotate 5s ease-in-out forwards;  */
     /* animation-play-state: paused;  permet de mettre en pause l'animation */
 }
 

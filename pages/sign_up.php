@@ -1,7 +1,4 @@
 <?php
-
-require __DIR__ . "/../config/database.php";
-// require_once '../config/database.php';
 // var_dump($pdo);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

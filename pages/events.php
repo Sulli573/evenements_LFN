@@ -1,53 +1,53 @@
 <?php
-require __DIR__ . "/../config/database.php";
+require_once __DIR__ . "/../config/database.php";
 
-// Insertion de données dans la table 'lieu'
-$id_lieu = '2';
-$nom_lieu = 'stade eaux vives';
-$adresse_lieu = '2 rue du';
+// // Insertion de données dans la table 'lieu'
+// $id_lieu = '2';
+// $nom_lieu = 'stade eaux vives';
+// $adresse_lieu = '2 rue du';
 
-$sql = "INSERT INTO lieu (id_lieu, nom_lieu, adresse_lieu) VALUES (:id_lieu, :nom_lieu, :adresse_lieu)";
-$stmt = $pdo->prepare($sql);
+// $sql = "INSERT INTO lieu (id_lieu, nom_lieu, adresse_lieu) VALUES (:id_lieu, :nom_lieu, :adresse_lieu)";
+// $stmt = $pdo->prepare($sql);
 
-$stmt->bindParam(':id_lieu', $id_lieu);
-$stmt->bindParam(':nom_lieu', $nom_lieu);
-$stmt->bindParam(':adresse_lieu', $adresse_lieu);
+// $stmt->bindParam(':id_lieu', $id_lieu);
+// $stmt->bindParam(':nom_lieu', $nom_lieu);
+// $stmt->bindParam(':adresse_lieu', $adresse_lieu);
 
-$stmt->execute();
+// $stmt->execute();
 
-// Insertion de données dans la table 'organisateur'
-$id_organisateur = '2';
-$nom_organisateur = 'clem';
-$contact_organisateur = "clem@c.com";
+// // Insertion de données dans la table 'organisateur'
+// $id_organisateur = '2';
+// $nom_organisateur = 'clem';
+// $contact_organisateur = "clem@c.com";
 
-$sql = "INSERT INTO organisateur (id_organisateur, nom_organisateur, contact_organisateur) VALUES (:id_organisateur, :nom_organisateur, :contact_organisateur)";
-$stmt = $pdo->prepare($sql);
+// $sql = "INSERT INTO organisateur (id_organisateur, nom_organisateur, contact_organisateur) VALUES (:id_organisateur, :nom_organisateur, :contact_organisateur)";
+// $stmt = $pdo->prepare($sql);
 
-$stmt->bindParam(':id_organisateur', $id_organisateur);
-$stmt->bindParam(':nom_organisateur', $nom_organisateur);
-$stmt->bindParam(':contact_organisateur', $contact_organisateur);
+// $stmt->bindParam(':id_organisateur', $id_organisateur);
+// $stmt->bindParam(':nom_organisateur', $nom_organisateur);
+// $stmt->bindParam(':contact_organisateur', $contact_organisateur);
 
-$stmt->execute();
+// $stmt->execute();
 
-// Insertion de données dans la table 'evenements'
-$nom_evenement = 'toto';
-$date_evenement = '01-01-2025';
-$description_evenement = 'Very Nice';
-$place_evenement = 100;
-$id_organisateur = '1';
-$id_lieu = '1';
+// // Insertion de données dans la table 'evenements'
+// $nom_evenement = 'toto';
+// $date_evenement = '01-01-2025';
+// $description_evenement = 'Very Nice';
+// $place_evenement = 100;
+// $id_organisateur = '1';
+// $id_lieu = '1';
 
-$sql = "INSERT INTO evenements (nom_evenement, date_evenement, description_evenement, place_evenement, id_organisateur, id_lieu) VALUES (:nom_evenement, :date_evenement, :description_evenement, :place_evenement, :id_organisateur, :id_lieu)";
-$stmt = $pdo->prepare($sql);
+// $sql = "INSERT INTO evenements (nom_evenement, date_evenement, description_evenement, place_evenement, id_organisateur, id_lieu) VALUES (:nom_evenement, :date_evenement, :description_evenement, :place_evenement, :id_organisateur, :id_lieu)";
+// $stmt = $pdo->prepare($sql);
 
-$stmt->bindParam(':nom_evenement', $nom_evenement);
-$stmt->bindParam(':date_evenement', $date_evenement);
-$stmt->bindParam(':description_evenement', $description_evenement);
-$stmt->bindParam(':place_evenement', $place_evenement);
-$stmt->bindParam(':id_organisateur', $id_organisateur);
-$stmt->bindParam(':id_lieu', $id_lieu);
+// $stmt->bindParam(':nom_evenement', $nom_evenement);
+// $stmt->bindParam(':date_evenement', $date_evenement);
+// $stmt->bindParam(':description_evenement', $description_evenement);
+// $stmt->bindParam(':place_evenement', $place_evenement);
+// $stmt->bindParam(':id_organisateur', $id_organisateur);
+// $stmt->bindParam(':id_lieu', $id_lieu);
 
-$stmt->execute();
+// $stmt->execute();
 
 // Requête pour récupérer les événements
 $sql = "SELECT nom_evenement, date_evenement, description_evenement, place_evenement FROM evenements";

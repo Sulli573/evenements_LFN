@@ -1,6 +1,6 @@
 <?php
 #chaine de connexion
-$dsn = "mysql:host=localhost;dbname=evenements;charset=utf8";
+$dsn = "mysql:host=localhost;dbname=bd_evenements;charset=utf8";
 $user = "root";
 $pass = "";
 
